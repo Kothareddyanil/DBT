@@ -1,0 +1,34 @@
+models:
+- name: stg_jaffle_shop__orders
+  description: This model provides a refined view of the orders data from the Jaffle
+    Shop source, focusing on key attributes such as order ID, customer ID, order date,
+    and order_status. It is designed to facilitate analysis of customer orders and their
+    statuses over time.
+  columns:
+  - name: order_id
+    description: A unique identifier for each order.
+    data_tests:
+      - unique
+      - not_null
+  
+  - name: order_status
+    description: "{{ doc ('order_status') }}"
+    data_tests:
+     - accepted_values:
+        arguments:
+          values:
+            - completed
+            - shipped
+            - returned
+            - placed
+            - return_pending
+
+  - name: customer_id
+    description: The identifier for the customer who placed the order.
+    data_tests:
+    - relationships:
+       arguments:
+         to: ref('stg_jaffle_shop__customers')
+         field: customer_id
+
+             

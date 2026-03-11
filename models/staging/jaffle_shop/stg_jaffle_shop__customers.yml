@@ -1,0 +1,17 @@
+models:
+  - name: stg_jaffle_shop__customers
+    description: It is refered from source customers and it has all the customers data 
+    columns:
+      - name: customer_id
+        description: it is a primary column which is holding customer id
+        tests:
+          - unique
+          - not_null
+      - name: first_name
+        description: customer first should ot be null 
+        tests:
+          - not_null
+      - name: last_name
+        description: customer first should ot be null 
+        tests:
+          - not_null
